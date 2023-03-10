@@ -6,12 +6,7 @@ package com.github.roddg86.parent;
 public interface Treatable {
 
     /**
-     * Поставить прививку
+     * Лечить
      */
-    void vaccination();
-
-    /**
-     * Сделать перевязку
-     */
-    void bandaging();
+    void treat();
 }

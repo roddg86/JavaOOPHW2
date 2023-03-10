@@ -22,7 +22,12 @@ public class Main {
         //vetClinic.getFlyable().forEach(System.out::println);
         //vetClinic.getSerializable().forEach(System.out::println);
         //vetClinic.getSpeakable().forEach(System.out::println);
-        //vetClinic.getSerializable().forEach(System.out::println);
+        //vetClinic.getClinic().forEach(System.out::println);
+
+        Bear bear = new Bear("Медведь");
+        bear.toHunt();
+
+
 
         for (int i = 0; i < vetClinic.getAnimals().size(); i++) {
             System.out.print(vetClinic.getAnimals().get(i).getName() + " ");
@@ -31,8 +36,7 @@ public class Main {
 
         Human human = new Human("Айболит", 5);
         human.speak();
-        human.vaccination();
-        human.bandaging();
+        human.treat();
 
         /**
          * Список для наследников интерфейса Illable(способных заболеть)
@@ -44,9 +48,8 @@ public class Main {
         //Выведем тех кто заболел
         for (Illable illable : illables
         ) {
-            illable.vaccination();
-            illable.bandaging();
-            //illable.getRunSpeed();
+            
+            illable.getIll();;
         }
 
         /**

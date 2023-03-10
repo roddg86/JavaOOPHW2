@@ -1,15 +1,16 @@
 package com.github.roddg86.impl;
 
-
-import com.github.roddg86.parent.*;
+import com.github.roddg86.parent.Animal;
+import com.github.roddg86.parent.Clinic;
+import com.github.roddg86.parent.Huntable;
+import com.github.roddg86.parent.Illable;
 import com.github.roddg86.parent.Runnable;
-
-import java.io.Serializable;
+import com.github.roddg86.parent.Speakable;
 
 /**
  * Сущьность кот
  */
-public class Cat extends Animal implements Runnable, Illable, Serializable, Huntable, Speakable {
+public class Cat extends Animal implements Runnable, Illable, Huntable, Speakable, Clinic {
     public Cat(String name, String color) {
         super(name, color, 4);
     }
@@ -17,7 +18,6 @@ public class Cat extends Animal implements Runnable, Illable, Serializable, Hunt
     public Cat(String name) {
         super(name);
     }
-
 
     @Override
     public void getIll() {
@@ -39,18 +39,11 @@ public class Cat extends Animal implements Runnable, Illable, Serializable, Hunt
         System.out.printf("%s Я бегу!%n", getType());
     }
 
+    /**
+     * Метод вызывает другие метода попорядку, чтобы невозможно было нарушить порядок
+     */
     @Override
-    public void vaccination() {
-        System.out.printf("%s Поставлен укол!%n", this.getType());
-    }
-
-    @Override
-    public void bandaging() {
-        System.out.printf("%s Сделана перевязка!%n", this.getType());
-    }
-
-    @Override
-    public void hunt() {
+    public void toHunt() {
         wakeUp();
         findFood();
         eat();
@@ -58,29 +51,24 @@ public class Cat extends Animal implements Runnable, Illable, Serializable, Hunt
         goToSleep();
     }
 
-    @Override
-    public void wakeUp() {
+    private void wakeUp() {
         System.out.println(getType() + ": проснулся");
     }
 
-    @Override
-    public void findFood() {
+    private void findFood() {
         String out = String.format("%s: нашел еду%n", getType());
         System.out.println(out);
     }
 
-    @Override
-    public void eat() {
+    private void eat() {
         System.out.printf("%s: поел%n", getType());
     }
 
-    @Override
-    public void toPlay() {
+    private void toPlay() {
         System.out.printf("%s: поиграл%n", getType());
     }
 
-    @Override
-    public void goToSleep() {
+    private void goToSleep() {
         System.out.printf("%s: уснул%n", getType());
     }
 

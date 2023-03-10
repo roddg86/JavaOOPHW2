@@ -2,15 +2,15 @@ package com.github.roddg86.impl;
 
 
 import com.github.roddg86.parent.Animal;
+import com.github.roddg86.parent.Clinic;
 import com.github.roddg86.parent.Swimable;
 
-import java.io.Serializable;
 
 /**
  * Плавающие
  * Сущность рыба
  */
-public class Fish extends Animal implements Swimable, Serializable {
+public class Fish extends Animal implements Swimable, Clinic {
     public Fish(String name, String color) {
         super(name, color);
     }

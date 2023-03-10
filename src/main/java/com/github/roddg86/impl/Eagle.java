@@ -1,16 +1,17 @@
 package com.github.roddg86.impl;
 
 import com.github.roddg86.parent.Animal;
+import com.github.roddg86.parent.Clinic;
 import com.github.roddg86.parent.Flyable;
 import com.github.roddg86.parent.Huntable;
 import com.github.roddg86.parent.Illable;
-
-import java.io.Serializable;
+import com.github.roddg86.parent.Runnable;
+import com.github.roddg86.parent.Speakable;
 
 /**
  * Сущность Орел
  */
-public class Eagle extends Animal implements Flyable, Illable, Serializable, Huntable {
+public class Eagle extends Animal implements Flyable, Illable, Huntable, Runnable, Speakable, Clinic {
 
     public Eagle(String name, String color) {
         super(name, color, 2);
@@ -34,9 +35,8 @@ public class Eagle extends Animal implements Flyable, Illable, Serializable, Hun
 
     @Override
     public void toFly() {
-            System.out.printf("%s Полетел!%n", this.getType());
+        System.out.printf("%s Полетел!%n", this.getType());
     }
-
 
     /**
      * пришел из интерфейса Illable
@@ -46,48 +46,48 @@ public class Eagle extends Animal implements Flyable, Illable, Serializable, Hun
 
     }
 
+    /**
+     * Метод вызывает другие метода попорядку, чтобы невозможно было нарушить порядок
+     */
     @Override
-    public void vaccination() {
-        System.out.printf("%s Поставлен укол!%n", this.getType());
-    }
-
-    @Override
-    public void bandaging() {
-        System.out.printf("%s Сделана перевязка!%n", this.getType());
-    }
-
-    @Override
-    public void hunt() {
+    public void toHunt() {
         wakeUp();
         findFood();
         eat();
-        toPlay();
         goToSleep();
     }
 
-    @Override
-    public void wakeUp() {
+    private void wakeUp() {
         System.out.println(getType() + ": проснулся");
     }
 
-    @Override
-    public void findFood() {
+    private void findFood() {
         String out = String.format("%s: нашел еду%n", getType());
         System.out.println(out);
     }
 
-    @Override
-    public void eat() {
+    private void eat() {
         System.out.printf("%s: поел%n", getType());
     }
 
-    @Override
-    public void toPlay() {
-        System.out.printf("%s: поиграл%n", getType());
+    private void goToSleep() {
+        System.out.printf("%s: уснул%n", getType());
     }
 
     @Override
-    public void goToSleep() {
-        System.out.printf("%s: уснул%n", getType());
+    public int getRunSpeed() {
+        int runSpeed = 20;
+        System.out.printf("%s Скорость бега: %d%n", this.getType(), runSpeed);
+        return runSpeed;
+    }
+
+    @Override
+    public void toGo() {
+        System.out.printf("%s Я бегу%n", getType());
+    }
+
+    @Override
+    public void speak() {
+        System.out.printf("%s: Крик орла!!%n", getType());
     }
 }

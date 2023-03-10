@@ -2,15 +2,15 @@ package com.github.roddg86.impl;
 
 
 import com.github.roddg86.parent.Animal;
+import com.github.roddg86.parent.Clinic;
 import com.github.roddg86.parent.Swimable;
 
-import java.io.Serializable;
 
 /**
  * Плавающие
  * Сущность осьминог
  */
-public class Octopus  extends Animal implements Swimable, Serializable {
+public class Octopus  extends Animal implements Swimable, Clinic {
     public Octopus(String name, String color) {
         super(name, color, 8);
     }

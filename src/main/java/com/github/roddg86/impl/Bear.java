@@ -1,16 +1,19 @@
 package com.github.roddg86.impl;
 
+
 import com.github.roddg86.parent.Animal;
+import com.github.roddg86.parent.Clinic;
+import com.github.roddg86.parent.Huntable;
 import com.github.roddg86.parent.Illable;
 import com.github.roddg86.parent.Runnable;
-
-import java.io.Serializable;
+import com.github.roddg86.parent.Speakable;
+import com.github.roddg86.parent.Swimable;
 
 /**
  * Бегающие
  * Сущность медведь
  */
-public class Bear extends Animal implements Runnable, Illable, Serializable {
+public class Bear extends Animal implements Runnable, Illable, Huntable, Swimable, Speakable, Clinic {
     public Bear(String name, String color) {
         super(name, color, 4);
     }
@@ -41,12 +44,41 @@ public class Bear extends Animal implements Runnable, Illable, Serializable {
     }
 
     @Override
-    public void vaccination() {
-
+    public int getSwimSpeed() {
+        int runSpeed = 10;
+        System.out.printf("%s Скорость заплыва: %d%n", this.getType(), runSpeed);
+        return runSpeed;
     }
 
     @Override
-    public void bandaging() {
+    public void toSwim() {
+        System.out.printf("%s Уже плыву%n", getType());
+    }
 
+    /**
+     * Метод вызывает другие метода попорядку, чтобы невозможно было нарушить порядок
+     */
+    @Override
+    public void toHunt() {
+        wakeUp();
+        findFood();
+        eat();
+        goToSleep();
+    }
+
+    private void wakeUp() {
+        System.out.println(getType() + ": проснулся");
+    }
+
+    private void findFood() {
+        System.out.printf("%s: поохотился%n", getType());
+    }
+
+    private void eat() {
+        System.out.printf("%s: поел%n", getType());
+    }
+
+    private void goToSleep() {
+        System.out.printf("%s: уснул%n", getType());
     }
 }
