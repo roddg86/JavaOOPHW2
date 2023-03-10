@@ -29,10 +29,10 @@ public class Main {
 
 
 
-//        for (int i = 0; i < vetClinic.getAnimals().size(); i++) {
-//            System.out.print(vetClinic.getAnimals().get(i).getName() + " ");
-//        }
-//        System.out.println();
+        for (int i = 0; i < vetClinic.getAnimals().size(); i++) {
+            System.out.print(vetClinic.getAnimals().get(i).getName() + " ");
+        }
+        System.out.println();
 
         Human human = new Human("Айболит", 5);
         human.speak();
